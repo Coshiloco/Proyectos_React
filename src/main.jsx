@@ -45,7 +45,29 @@ const app = (
 		<p>POrbamos a pintar un React Fragment {fragmentodereact}</p>
 	</div>
 );
+
+// Hacemos un nuevo compoenente para estudiar las props de jsx
+const appjsx = (
+	<div tabIndex={0} aria-label='Hola' data-toggle=''>
+		<h1 className='title'>Curso de React estudio de propiedades de JSX</h1>
+		<button onClick={() => alert('Acceder')}>Acceder</button>
+	</div>
+);
+
+const propiedadstyle = (
+	<h1
+		style={{
+			color: 'red',
+			fontSize: '1rem'
+		}}
+	>
+		Curso de React propiedad style
+	</h1>
+);
+
 console.log(app);
 const container = document.getElementById('root');
 
 ReactDOM.render(app, container);
+ReactDOM.render(appjsx, container);
+ReactDOM.render(propiedadstyle, container);
