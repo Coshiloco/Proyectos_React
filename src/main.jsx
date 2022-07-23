@@ -65,9 +65,27 @@ const propiedadstyle = (
 	</h1>
 );
 
+const propsclassname = {
+	class: 'title',
+	className: 'title'
+};
+
+const { class: className } = propsclassname;
+
+const classnameyhtmlforapp = (
+	<div>
+		<h1 className={className}>Curso de React propiedad className y htmlFor</h1>
+		<form>
+			<label htmlFor='text'>Texto</label>
+			<input type='text' id='text'></input>
+		</form>
+	</div>
+);
+
 console.log(app);
 const container = document.getElementById('root');
 
 ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
+ReactDOM.render(classnameyhtmlforapp, container);
