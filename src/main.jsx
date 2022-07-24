@@ -82,6 +82,37 @@ const classnameyhtmlforapp = (
 	</div>
 );
 
+const defaultvalueydefaultchecked = (
+	<form>
+		<label htmlFor='text'>Texto</label>
+		<input type='text' id='text' defaultValue='Valor por Defecto'></input>
+	</form>
+);
+
+const defaultcheckedprueba = (
+	<form>
+		<label htmlFor='text'>Texto</label>
+		<select defaultValue='c'>
+			<option value='a'>A</option>
+			<option value='b'>B</option>
+			<option value='c'>C</option>
+		</select>
+		<input type='checkbox' id='text' defaultChecked />
+		<input
+			type='textarea'
+			id='text'
+			defaultValue='Tenemos que utilizar defaultchecked'
+		/>
+		<textarea
+			name='areatexto'
+			id='text'
+			cols='30'
+			rows='10'
+			defaultValue='Soy el defaultValue tengo que utilizar este'
+		></textarea>
+	</form>
+);
+
 console.log(app);
 const container = document.getElementById('root');
 
@@ -89,3 +120,5 @@ ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
 ReactDOM.render(classnameyhtmlforapp, container);
+ReactDOM.render(defaultvalueydefaultchecked, container);
+ReactDOM.render(defaultcheckedprueba, container);
