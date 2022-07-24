@@ -148,6 +148,45 @@ const inputRendedkeys = inputspread.map(inputProps => (
 console.log(app);
 const container = document.getElementById('root');
 
+// Componentes en jsx
+
+const getUser = (name, role) => (
+	<div className='user'>
+		<span className='name'>{name}</span>
+		<span className='role'>{role}</span>
+	</div>
+);
+
+const componentesapp = (
+	<div className='list'>
+		{getUser('Pablo Hurtado GOnzalo', 'Estudiante')}
+		{getUser('Bauty', 'Estudiante')}
+	</div>
+);
+
+// Creado los primeros componentes
+const Title = () => <h1>Lista de usuarios</h1>;
+
+const Usercomponente = props => {
+	return (
+		<div className='user'>
+			<span className='name'>{props.name}</span>
+			<span className='role'>{props.role}</span>
+		</div>
+	);
+};
+
+const appprimeroscomponentespropios = (
+	<div className='list'>
+		<Title></Title>
+		<Usercomponente
+			name='Pablo Hurtado Gonzalo'
+			role='Estudiante'
+		></Usercomponente>
+		<Usercomponente name='Bauty' role='Estudiante'></Usercomponente>
+	</div>
+);
+
 ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
@@ -157,3 +196,6 @@ ReactDOM.render(defaultcheckedprueba, container);
 ReactDOM.render(propiedadescustom, container);
 ReactDOM.render(spreaddepropiedades, container);
 ReactDOM.render(inputRendedkeys, container);
+// Unidad COmponnetes
+ReactDOM.render(componentesapp, container);
+ReactDOM.render(appprimeroscomponentespropios, container);
