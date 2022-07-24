@@ -113,6 +113,38 @@ const defaultcheckedprueba = (
 	</form>
 );
 
+const propiedadescustom = <div cualquiercosa='atributocustom'></div>;
+
+const inputspread = [
+	{
+		type: 'text',
+		name: 'name',
+		placeholder: 'Nombre'
+	},
+	{
+		type: 'text',
+		name: 'email',
+		placeholder: 'Email'
+	},
+	{
+		type: 'password',
+		name: 'password',
+		placeholder: 'Contraseña'
+	}
+];
+
+const spreaddepropiedades = (
+	<form>
+		<input {...inputspread[0]} />
+		<input {...inputspread[1]} />
+		<input {...inputspread[2]} />
+	</form>
+);
+
+const inputRendedkeys = inputspread.map(inputProps => (
+	<input key={inputProps.name} {...inputProps}></input>
+));
+
 console.log(app);
 const container = document.getElementById('root');
 
@@ -122,3 +154,6 @@ ReactDOM.render(propiedadstyle, container);
 ReactDOM.render(classnameyhtmlforapp, container);
 ReactDOM.render(defaultvalueydefaultchecked, container);
 ReactDOM.render(defaultcheckedprueba, container);
+ReactDOM.render(propiedadescustom, container);
+ReactDOM.render(spreaddepropiedades, container);
+ReactDOM.render(inputRendedkeys, container);
