@@ -1,4 +1,6 @@
-import * as ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
+import Title from './components/Title';
+import UserList from './components/UsersList';
 import './index.css';
 
 // variables
@@ -164,9 +166,6 @@ const componentesapp = (
 	</div>
 );
 
-// Creado los primeros componentes
-const Title = () => <h1>Lista de usuarios</h1>;
-
 const Usercomponente = props => {
 	return (
 		<div className='user'>
@@ -226,31 +225,10 @@ const USERS = [
 	}
 ];
 
-const TitleConChildren = ({ children }) => <h1>{children}</h1>;
-
-const UserConChildren = ({ name, role }) => (
-	<div className='user'>
-		<span className='name'>{name}</span>
-		<span className='role'>{role}</span>
-	</div>
-);
-
-const List = ({ users, children }) => {
-	const usersRendered = users.map(user => (
-		<UserConChildren key={user.name} {...user} />
-	));
-	return (
-		<div className='list'>
-			{children}
-			{usersRendered}
-		</div>
-	);
-};
-
 const appConChildren = (
-	<List users={USERS}>
-		<TitleConChildren>Tablon de usuarios</TitleConChildren>
-	</List>
+	<UserList users={USERS}>
+		<Title>Liston de tablon de USuarios</Title>
+	</UserList>
 );
 
 ReactDOM.render(app, container);
