@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { ReactDOM } from 'react';
 import './index.css';
 
 // variables
@@ -209,6 +209,50 @@ const appdestructuringprops = (
 	</div>
 );
 
+// COmposicion de componentes
+
+const USERS = [
+	{
+		name: 'Pablo Hurtado Gonzalo',
+		role: 'estudiante'
+	},
+	{
+		name: 'Bauty',
+		role: 'estudiante'
+	},
+	{
+		name: 'Ninvel',
+		role: 'estudiante'
+	}
+];
+
+const TitleConChildren = ({ children }) => <h1>{children}</h1>;
+
+const UserConChildren = ({ name, role }) => (
+	<div className='user'>
+		<span className='name'>{name}</span>
+		<span className='role'>{role}</span>
+	</div>
+);
+
+const List = ({ users, children }) => {
+	const usersRendered = users.map(user => (
+		<UserConChildren key={user.name} {...user} />
+	));
+	return (
+		<div className='list'>
+			{children}
+			{usersRendered}
+		</div>
+	);
+};
+
+const appconchildren = (
+	<List users={USERS}>
+		<TitleConChildren>Tablon de usuarios</TitleConChildren>
+	</List>
+);
+
 ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
@@ -222,3 +266,4 @@ ReactDOM.render(inputRendedkeys, container);
 ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
+ReactDOM.render(appconchildren, container);
