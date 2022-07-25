@@ -247,7 +247,7 @@ const List = ({ users, children }) => {
 	);
 };
 
-const appconchildren = (
+const appConChildren = (
 	<List users={USERS}>
 		<TitleConChildren>Tablon de usuarios</TitleConChildren>
 	</List>
@@ -266,4 +266,4 @@ ReactDOM.render(inputRendedkeys, container);
 ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
-ReactDOM.render(appconchildren, container);
+ReactDOM.render(appConChildren, container);
