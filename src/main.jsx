@@ -187,6 +187,28 @@ const appprimeroscomponentespropios = (
 	</div>
 );
 
+const UerDestructuringProps = ({ name, role, ...restProps }) => (
+	<div className='user' {...restProps}>
+		<span className='name'>{name}</span>
+		<span className='role'>{role}</span>
+	</div>
+);
+
+const appdestructuringprops = (
+	<div className='list'>
+		<Title></Title>
+		<UerDestructuringProps
+			name='Pablo Hurtado Gonzalo'
+			role='Estudiante'
+			onClick={() => console.log('Click')}
+		></UerDestructuringProps>
+		<UerDestructuringProps
+			name='Bauty'
+			role='Estudiante'
+		></UerDestructuringProps>
+	</div>
+);
+
 ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
@@ -199,3 +221,4 @@ ReactDOM.render(inputRendedkeys, container);
 // Unidad COmponnetes
 ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
+ReactDOM.render(appdestructuringprops, container);
