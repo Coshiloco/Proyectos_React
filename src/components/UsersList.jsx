@@ -1,3 +1,4 @@
+import './UserLIst.css';
 import UserRow from './UserRow';
 
 const UserList = ({ users, children }) => {

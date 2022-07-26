@@ -1,3 +1,4 @@
+import './UserRow.css';
 const UserRow = ({ name, role }) => (
 	<div className='user'>
 		<span className='name'>{name}</span>
