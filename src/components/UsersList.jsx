@@ -1,4 +1,4 @@
-import './UserLIst.css';
+import style from './UserLIst.module.css';
 import UserRow from './UserRow';
 
 const UserList = ({ users, children }) => {
@@ -6,7 +6,7 @@ const UserList = ({ users, children }) => {
 		<UserRow key={user.name} {...user} />
 	));
 	return (
-		<div className='list'>
+		<div className={style.list}>
 			{children}
 			{usersRendered}
 		</div>

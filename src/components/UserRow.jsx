@@ -1,8 +1,8 @@
-import './UserRow.css';
+import style from './UserRow.module.css';
 const UserRow = ({ name, role }) => (
-	<div className='user'>
-		<span className='name'>{name}</span>
-		<span className='role'>{role}</span>
+	<div className={style.user}>
+		<span className={style.name}>{name}</span>
+		<span className={style.role}>{role}</span>
 	</div>
 );
 
