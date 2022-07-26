@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
+import AppConChildren from './App';
 import Title from './components/Title';
-import UserList from './components/UsersList';
 import './index.css';
 
 // variables
@@ -210,27 +210,6 @@ const appdestructuringprops = (
 
 // COmposicion de componentes
 
-const USERS = [
-	{
-		name: 'Pablo Hurtado Gonzalo',
-		role: 'estudiante'
-	},
-	{
-		name: 'Bauty',
-		role: 'estudiante'
-	},
-	{
-		name: 'Ninvel',
-		role: 'estudiante'
-	}
-];
-
-const appConChildren = (
-	<UserList users={USERS}>
-		<Title>Liston de tablon de USuarios</Title>
-	</UserList>
-);
-
 ReactDOM.render(app, container);
 ReactDOM.render(appjsx, container);
 ReactDOM.render(propiedadstyle, container);
@@ -244,4 +223,4 @@ ReactDOM.render(inputRendedkeys, container);
 ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
-ReactDOM.render(appConChildren, container);
+ReactDOM.render(<AppConChildren />, container);
