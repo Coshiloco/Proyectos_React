@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import AppConChildren from './App';
 import Title from './components/Title';
-import './index.css';
+import './styles/index.css';
 
 // variables
 const curso = 'React';
