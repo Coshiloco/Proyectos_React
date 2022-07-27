@@ -1,8 +1,12 @@
 import style from './UserRow.module.css';
 const UserRow = ({ name, role }) => (
 	<div className={style.user}>
-		<span className={style.name}>{name}</span>
-		<span className={style.role}>{role}</span>
+		<div className={style.name}>
+			<span>{name}</span>
+		</div>
+		<div className={style.role}>
+			<span>{role}</span>
+		</div>
 	</div>
 );
 
