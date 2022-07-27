@@ -4,17 +4,17 @@ import UserList from './components/UsersList';
 const USERS = [
 	{
 		name: 'Pablo Hurtado Gonzalo',
-		activo: true,
+		active: true,
 		role: 'estudiante'
 	},
 	{
 		name: 'Bauty',
-		activo: true,
+		active: true,
 		role: 'estudiante'
 	},
 	{
 		name: 'Ninvel',
-		activo: false,
+		active: false,
 		role: 'estudiante'
 	}
 ];
