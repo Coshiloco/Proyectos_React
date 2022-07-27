@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import AppConChildren from './App';
-import Title from './components/Title';
 import './styles/index.css';
 
 // variables
@@ -177,7 +176,6 @@ const Usercomponente = props => {
 
 const appprimeroscomponentespropios = (
 	<div className='list'>
-		<Title></Title>
 		<Usercomponente
 			name='Pablo Hurtado Gonzalo'
 			role='Estudiante'
@@ -195,7 +193,6 @@ const UerDestructuringProps = ({ name, role, ...restProps }) => (
 
 const appdestructuringprops = (
 	<div className='list'>
-		<Title></Title>
 		<UerDestructuringProps
 			name='Pablo Hurtado Gonzalo'
 			role='Estudiante'
