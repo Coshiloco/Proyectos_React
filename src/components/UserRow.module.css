@@ -12,7 +12,8 @@
 	width: 60%;
 }
 
-.role {
+.role,
+.active {
 	width: 20%;
 	display: flex;
 	justify-content: center;
