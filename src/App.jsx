@@ -5,17 +5,17 @@ const USERS = [
 	{
 		name: 'Pablo Hurtado Gonzalo',
 		active: true,
-		role: 'estudiante'
+		role: 'teacher'
 	},
 	{
 		name: 'Bauty',
 		active: true,
-		role: 'estudiante'
+		role: 'student'
 	},
 	{
 		name: 'Ninvel',
 		active: false,
-		role: 'estudiante'
+		role: 'other'
 	}
 ];
 
