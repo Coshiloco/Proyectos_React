@@ -16,6 +16,11 @@ const USERS = [
 		name: 'Ninvel',
 		active: false,
 		role: 'other'
+	},
+	{
+		name: 'Fabio',
+		active: true,
+		role: 'teacher'
 	}
 ];
 
