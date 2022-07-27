@@ -1,4 +1,3 @@
-import Title from './components/Title';
 import UserList from './components/UsersList';
 
 const USERS = [
@@ -26,7 +25,7 @@ const USERS = [
 
 const AppConChildren = () => (
 	<UserList users={USERS}>
-		<Title>Liston de tablon de USuarios</Title>
+		<h1>Liston de tablon de USuarios</h1>
 	</UserList>
 );
 
