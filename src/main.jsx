@@ -205,6 +205,22 @@ const appdestructuringprops = (
 	</div>
 );
 
+// Eventos con addEventListener
+
+const Appeventos = () => (
+	<button
+		onClick={() => {
+			alert('Prueba React');
+			alert('Prueba React 2');
+			alert('Prueba React 3');
+			alert('Prueba React 4');
+			alert('Prueba React 5');
+		}}
+	>
+		React
+	</button>
+);
+
 // COmposicion de componentes
 
 ReactDOM.render(app, container);
@@ -221,3 +237,4 @@ ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
 ReactDOM.render(<AppConChildren />, container);
+ReactDOM.render(<Appeventos />, container);
