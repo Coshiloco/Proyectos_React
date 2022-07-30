@@ -5,7 +5,8 @@ import style from './UserRole.module.css';
 	const ROLES_STYLES = {
 		teacher: ['Profesor', style.teacher],
 		student: ['Alumno', style.student],
-		other: ['Otro', style.other]
+		other: ['Otro', style.other],
+		standby: ['standby', style.standby]
 	};
 
 const UserRole = ({ role }) => {
