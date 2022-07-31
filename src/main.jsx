@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation'
-import AppConChildren from './App';
 import { useState } from 'react';
+import ReactDOM from 'react-dom';
+import AppConChildren from './App';
+import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
+import './styles/index.css';
 
 // variables
 const curso = 'React';
@@ -273,7 +273,4 @@ ReactDOM.render(<AppConChildren />, container);
 ReactDOM.render(<Appeventos />, container);
 ReactDOM.render(<AppPreveniendoComportamientoPorDefecto />, container);
 ReactDOM.render(<Apptarget></Apptarget>, container);
-ReactDOM.render(
-	<AppEventBubblingCapturingStopPropagation />,
-	container
-);
+ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
