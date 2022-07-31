@@ -1,4 +1,3 @@
-import './styles/index.css';
 
 const AppEventBubblingCapturingStopPropagation = () => {
 	<div
