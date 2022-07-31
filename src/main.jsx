@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import AppConChildren from './App';
 import './styles/index.css';
 
 // // variables
@@ -207,19 +207,23 @@ const container = document.getElementById('root');
 
 // Eventos con addEventListener
 
-// const Appeventos = () => (
-// 	<button
-// 		onClick={() => {
-// 			alert('Prueba React');
-// 			alert('Prueba React 2');
-// 			alert('Prueba React 3');
-// 			alert('Prueba React 4');
-// 			alert('Prueba React 5');
-// 		}}
-// 	>
-// 		React
-// 	</button>
-// );
+const Appeventos = () => {
+	const [hasListener, setHasListener] = useState(true);
+	return (
+		<button
+			onClick={
+				hasListener
+					? () => {
+							alert('Prueba React');
+							setHasListener(false);
+					  }
+					: undefined
+			}
+		>
+			React
+		</button>
+	);
+};
 
 // COmposicion de componentes
 
@@ -236,5 +240,5 @@ const container = document.getElementById('root');
 // ReactDOM.render(componentesapp, container);
 // ReactDOM.render(appprimeroscomponentespropios, container);
 // ReactDOM.render(appdestructuringprops, container);
-ReactDOM.render(<AppConChildren />, container);
-// ReactDOM.render(<Appeventos />, container);
+// ReactDOM.render(<AppConChildren />, container);
+ReactDOM.render(<Appeventos />, container);
