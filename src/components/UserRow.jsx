@@ -10,7 +10,7 @@ const UserRow = ({ name, active, role }) => {
 	// Por el que vamos a cambiar
 	const newrole = isActive ? role : 'standby';
 	// Podemos poner un texto tambien que cuando la variable este inactiva le ponemos esta inactivo
-	const nombreInactivo = isActive ? name : 'Este empleado esta inactivo';
+	const nombreInactivo = isActive ? name : `${name} esta inactivo`;
 	return (
 		<div className={style.user}>
 			<div className={style.name}>
