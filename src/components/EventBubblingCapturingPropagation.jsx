@@ -1,14 +1,20 @@
 const AppEventBubblingCapturingStopPropagation = () => (
 	<div
 		onClick={ev => {
-			console.log('DIV - Target', ev.target);
-			console.log('DIV - CurrentTarget', ev.currentTarget);
+			console.log('DIV - onclick');
+		}}
+		onClickCapture={ev => {
+			// ev.stopPropagation();
+			console.log('DIV - onClickCapture');
 		}}
 	>
 		<button
 			onClick={ev => {
-				console.log('BTN - Target', ev.target);
-				console.log('BTN - CurrentTarget', ev.currentTarget);
+				console.log('BTN - onclick');
+			}}
+			onClickCapture={ev => {
+				ev.stopPropagation();
+				console.log('BTN - onClickCapture');
 			}}
 		>
 			React

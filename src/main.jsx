@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AppConChildren from './App';
 import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
+import AppFormulariosNoControlados from './FormulariosNoControlados';
 import './styles/index.css';
 
 // variables
@@ -274,3 +275,4 @@ ReactDOM.render(<Appeventos />, container);
 ReactDOM.render(<AppPreveniendoComportamientoPorDefecto />, container);
 ReactDOM.render(<Apptarget></Apptarget>, container);
 ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
+ReactDOM.render(<AppFormulariosNoControlados />, container);
