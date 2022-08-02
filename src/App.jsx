@@ -25,7 +25,6 @@ const USERS = [
 
 const AppConChildren = () => (
 	<UserList users={USERS}>
-		<h1>Liston de tablon de USuarios</h1>
 	</UserList>
 );
 

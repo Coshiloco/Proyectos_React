@@ -1,8 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AppConChildren from './App';
-import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
-import AppFormulariosNoControlados from './FormulariosNoControlados';
+// import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
+// import AppFormulariosNoControlados from './FormulariosNoControlados';
 import './styles/index.css';
 
 // variables
@@ -210,50 +210,50 @@ const appdestructuringprops = (
 
 // Eventos con addEventListener
 
-const Appeventos = () => {
-	const [hasListener, setHasListener] = useState(true);
-	return (
-		<button
-			onClick={
-				hasListener
-					? () => {
-							alert('Prueba React');
-							setHasListener(false);
-					  }
-					: undefined
-			}
-		>
-			React
-		</button>
-	);
-};
+// const Appeventos = () => {
+// 	const [hasListener, setHasListener] = useState(true);
+// 	return (
+// 		<button
+// 			onClick={
+// 				hasListener
+// 					? () => {
+// 							alert('Prueba React');
+// 							setHasListener(false);
+// 					  }
+// 					: undefined
+// 			}
+// 		>
+// 			React
+// 		</button>
+// 	);
+// };
 
 // PreventDefault
 
-const AppPreveniendoComportamientoPorDefecto = () => (
-	<a
-		href='https:eactjs.org'
-		onClick={ev => {
-			ev.preventDefault();
-			alert('Navegando en React...');
-		}}
-	>
-		React
-	</a>
-);
+// const AppPreveniendoComportamientoPorDefecto = () => (
+// 	<a
+// 		href='https:eactjs.org'
+// 		onClick={ev => {
+// 			ev.preventDefault();
+// 			alert('Navegando en React...');
+// 		}}
+// 	>
+// 		React
+// 	</a>
+// );
 
 // Target vs CurrentTarget
 
-const Apptarget = () => (
-	<div
-		onClick={ev => {
-			console.log('Target ', ev.target);
-			console.log('CurrentTarget ', ev.currentTarget);
-		}}
-	>
-		<button>React</button>
-	</div>
-);
+// const Apptarget = () => (
+// 	<div
+// 		onClick={ev => {
+// 			console.log('Target ', ev.target);
+// 			console.log('CurrentTarget ', ev.currentTarget);
+// 		}}
+// 	>
+// 		<button>React</button>
+// 	</div>
+// );
 
 // COmposicion de componentes
 
@@ -271,8 +271,8 @@ ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
 ReactDOM.render(<AppConChildren />, container);
-ReactDOM.render(<Appeventos />, container);
-ReactDOM.render(<AppPreveniendoComportamientoPorDefecto />, container);
-ReactDOM.render(<Apptarget></Apptarget>, container);
-ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
-ReactDOM.render(<AppFormulariosNoControlados />, container);
+// ReactDOM.render(<Appeventos />, container);
+// ReactDOM.render(<AppPreveniendoComportamientoPorDefecto />, container);
+// ReactDOM.render(<Apptarget></Apptarget>, container);
+// ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
+// ReactDOM.render(<AppFormulariosNoControlados />, container);
