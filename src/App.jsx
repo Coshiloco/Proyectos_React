@@ -18,7 +18,7 @@ const USERS = [
 	},
 	{
 		name: 'Fabio',
-		active: true,
+		active: false,
 		role: 'teacher'
 	}
 ];
