@@ -5,8 +5,10 @@ import UserRow from './UserRow';
 const UserList = ({ users }) => {
 	const [search, setSearch] = useState('');
 	const [onlyActive, setOnlyActive] = useState(false);
+	const [sortBy, setSortBy] = useState(0);
 	let usersFiltered = filterActiveUsers(users, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
+	usersFiltered = sortUsers(usersFiltered, sortBy);
 	const usersRendered = renderUsers(usersFiltered);
 	return (
 		<div className={style.list}>
@@ -25,9 +27,9 @@ const UserList = ({ users }) => {
 					></input>
 					<span>Solo activos</span>
 				</div>
-				<select>
-					<option value={0}>Por defecto</option>
-					<option value={1}>Por nombre</option>
+				<select value={sortBy} onChange={ev => setSortBy(ev.target.value)}>
+					<option value={'ByDefault'}>Por defecto</option>
+					<option value={'ByName'}>Por nombre</option>
 				</select>
 			</form>
 			{usersRendered}
@@ -46,6 +48,19 @@ const filterUsersByName = (users, search) => {
 const filterActiveUsers = (users, active) => {
 	if (!active) return users;
 	return users.filter(user => user.active);
+};
+
+const sortUsers = (users, sortBy) => {
+	switch (sortBy) {
+		case 'ByDefault':
+			return users.sort((a, b) => {
+				if (a.name > b.name) return 1;
+				if (a.name < b.name) return -1;
+				return 0;
+			});
+		default:
+			return users;
+	}
 };
 
 const renderUsers = users => {
