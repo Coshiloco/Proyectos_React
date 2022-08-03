@@ -5,8 +5,8 @@ import UserRow from './UserRow';
 const UserList = ({ users }) => {
 	const [search, setSearch] = useState('');
 	const [onlyActive, setOnlyActive] = useState(false);
-	let usersFiltered = filterUsersByName(users, search);
-	usersFiltered = filterActiveUsers(usersFiltered, onlyActive);
+	let usersFiltered = filterActiveUsers(users, onlyActive);
+	usersFiltered = filterUsersByName(usersFiltered, search);
 	const usersRendered = renderUsers(usersFiltered);
 	return (
 		<div className={style.list}>
