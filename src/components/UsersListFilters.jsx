@@ -6,7 +6,7 @@ const UsersListFilters = ({
 	setOnlyActive,
 	sortBy,
 	setSortBy
-}) => {
+}) => (
 	<form className={style.form}>
 		<input
 			type='text'
@@ -25,7 +25,7 @@ const UsersListFilters = ({
 			<option value={'ByDefault'}>Por defecto</option>
 			<option value={'ByName'}>Por nombre</option>
 		</select>
-	</form>;
-};
+	</form>
+);
 
 export default UsersListFilters;

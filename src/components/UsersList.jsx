@@ -15,15 +15,13 @@ const UserList = ({ users }) => {
 		<div className={style.list}>
 			<h1>Listado de usuarios</h1>
 			<UsersListFilters
-				{...{
-					search,
-					setSearch,
-					onlyActive,
-					setOnlyActive,
-					sortBy,
-					setSortBy
-				}}
-			></UsersListFilters>
+				search={search}
+				setSearch={setSearch}
+				onlyActive={onlyActive}
+				setOnlyActive={setOnlyActive}
+				sortBy={sortBy}
+				setSortBy={setSortBy}
+			/>
 			{usersRendered}
 		</div>
 	);
