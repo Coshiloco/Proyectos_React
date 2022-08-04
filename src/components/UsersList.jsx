@@ -5,7 +5,7 @@ import UserRow from './UserRow';
 const UserList = ({ users }) => {
 	const [search, setSearch] = useState('');
 	const [onlyActive, setOnlyActive] = useState(false);
-	const [sortBy, setSortBy] = useState(0);
+	const [sortBy, setSortBy] = useState('ByDefault');
 	let usersFiltered = filterActiveUsers(users, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
@@ -53,7 +53,7 @@ const filterActiveUsers = (users, active) => {
 const sortUsers = (users, sortBy) => {
 	switch (sortBy) {
 		case 'ByName':
-			return users.sort((a, b) => {
+			return [...users].sort((a, b) => {
 				if (a.name > b.name) return 1;
 				if (a.name < b.name) return -1;
 				return 0;
