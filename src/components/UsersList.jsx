@@ -10,7 +10,6 @@ const UserList = ({ users }) => {
 	let usersFiltered = filterActiveUsers(users, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
-	const usersRendered = renderUsers(usersFiltered);
 	return (
 		<div className={style.list}>
 			<h1>Listado de usuarios</h1>
@@ -22,7 +21,7 @@ const UserList = ({ users }) => {
 				sortBy={sortBy}
 				setSortBy={setSortBy}
 			/>
-			{usersRendered}
+			<UsersListRows users={usersFiltered}/>
 		</div>
 	);
 };
@@ -54,7 +53,7 @@ const sortUsers = (users, sortBy) => {
 	}
 };
 
-const renderUsers = users => {
+const UsersListRows = ({users}) => {
 	if (users.length <= 0) return <p>No hay usuarios</p>;
 	return users.map(user => <UserRow key={user.name} {...user} />);
 };
