@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import style from './UserLIst.module.css';
 import UserRow from './UserRow';
+import UsersListFilters from './UsersListFilters';
 
 const UserList = ({ users }) => {
 	const [search, setSearch] = useState('');
@@ -13,25 +14,16 @@ const UserList = ({ users }) => {
 	return (
 		<div className={style.list}>
 			<h1>Listado de usuarios</h1>
-			<form className={style.form}>
-				<input
-					type='text'
-					value={search}
-					onChange={ev => setSearch(ev.target.value)}
-				></input>
-				<div className={style.active}>
-					<input
-						type='checkbox'
-						checked={onlyActive}
-						onChange={ev => setOnlyActive(ev.target.checked)}
-					></input>
-					<span>Solo activos</span>
-				</div>
-				<select value={sortBy} onChange={ev => setSortBy(ev.target.value)}>
-					<option value={'ByDefault'}>Por defecto</option>
-					<option value={'ByName'}>Por nombre</option>
-				</select>
-			</form>
+			<UsersListFilters
+				{...{
+					search,
+					setSearch,
+					onlyActive,
+					setOnlyActive,
+					sortBy,
+					setSortBy
+				}}
+			></UsersListFilters>
 			{usersRendered}
 		</div>
 	);
