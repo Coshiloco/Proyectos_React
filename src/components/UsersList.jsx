@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import style from './UserLIst.module.css';
-import UserRow from './UserRow';
 import UsersListFilters from './UsersListFilters';
+import UsersListRows from './UsersListRows';
 
 const UserList = ({ users }) => {
 	const [search, setSearch] = useState('');
@@ -51,11 +51,6 @@ const sortUsers = (users, sortBy) => {
 		default:
 			return sortedUsers;
 	}
-};
-
-const UsersListRows = ({users}) => {
-	if (users.length <= 0) return <p>No hay usuarios</p>;
-	return users.map(user => <UserRow key={user.name} {...user} />);
 };
 
 export default UserList;
