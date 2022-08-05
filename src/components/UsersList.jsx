@@ -4,43 +4,52 @@ import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
 const UserList = ({ users }) => {
+	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
+	let usersFiltered = filterActiveUsers(users, onlyActive);
+	usersFiltered = filterUsersByName(usersFiltered, search);
+	usersFiltered = sortUsers(usersFiltered, sortBy);
+	return (
+		<div className={style.list}>
+			<h1>Listado de usuarios</h1>
+			<UsersListFilters
+				search={search}
+				onlyActive={onlyActive}
+				sortBy={sortBy}
+				{...setFiltersFunctions}
+			/>
+			<UsersListRows users={usersFiltered} />
+		</div>
+	);
+};
+
+const useFilters = () => {
 	const [filters, setFilters] = useState({
 		search: '',
 		onlyActive: false,
 		sortBy: 'ByDefault'
 	});
-	let usersFiltered = filterActiveUsers(users, filters.onlyActive);
-	usersFiltered = filterUsersByName(usersFiltered, filters.search);
-	usersFiltered = sortUsers(usersFiltered, filters.sortBy);
-	return (
-		<div className={style.list}>
-			<h1>Listado de usuarios</h1>
-			<UsersListFilters
-				search={filters.search}
-				setSearch={search =>
-					setFilters({
-						...filters,
-						search
-					})
-				}
-				onlyActive={filters.onlyActive}
-				setOnlyActive={onlyActive =>
-					setFilters({
-						...filters,
-						onlyActive
-					})
-				}
-				sortBy={filters.sortBy}
-				setSortBy={sortBy =>
-					setFilters({
-						...filters,
-						sortBy
-					})
-				}
-			/>
-			<UsersListRows users={usersFiltered} />
-		</div>
-	);
+	const setSearch = search =>
+		setFilters({
+			...filters,
+			search
+		});
+	const setOnlyActive = onlyActive => {
+		setFilters({
+			...filters,
+			onlyActive
+		});
+	};
+	const setSortBy = sortBy =>
+		setFilters({
+			...filters,
+			sortBy
+		});
+	return {
+		...filters,
+		setSearch,
+		setOnlyActive,
+		setSortBy
+	};
 };
 
 const filterUsersByName = (users, search) => {
