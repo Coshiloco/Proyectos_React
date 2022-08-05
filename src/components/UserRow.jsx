@@ -3,15 +3,7 @@ import UserRole from './UserRole';
 import style from './UserRow.module.css';
 import UserStatus from './UserStatus';
 
-const UserRow = ({ name, active, role }) => {
-	// Almacenamos el estado del usuario al momento de su creacion
-	// Para pasar el estado de activo o inactivo al ReactDOm
-	const [isActive, seiIsActive] = useState(active);
-	// Por el que vamos a cambiar
-	const newrole = isActive ? role : 'standby';
-	// Podemos poner un texto tambien que cuando la variable este inactiva le ponemos esta inactivo
-	const nombreInactivo = isActive ? name : `${name} esta inactivo`;
-	return (
+const UserRow = ({ name, active, role }) => (
 		<div className={style.user}>
 			<div className={style.name}>
 				<span>{nombreInactivo}</span>
@@ -32,7 +24,6 @@ const UserRow = ({ name, active, role }) => {
 				</button>
 			</div>
 		</div>
-	);
-};
+);
 
 export default UserRow;

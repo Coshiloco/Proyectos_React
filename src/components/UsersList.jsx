@@ -3,11 +3,13 @@ import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
-const UserList = ({ users }) => {
+const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-	let usersFiltered = filterActiveUsers(users, onlyActive);
+	const { name, role, active, ...setUserFunctions } = useUserState(initialUsers.name, initialUsers.role, initialUsers.active);
+	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
+
 	return (
 		<div className={style.list}>
 			<h1>Listado de usuarios</h1>
@@ -17,7 +19,13 @@ const UserList = ({ users }) => {
 				sortBy={sortBy}
 				{...setFiltersFunctions}
 			/>
-			<UsersListRows users={usersFiltered} />
+			<UsersListRows
+				users={usersFiltered}
+				name={name}
+				role={role}
+				active={active}
+				{...setUserFunctions}
+			/>
 		</div>
 	);
 };
@@ -77,6 +85,39 @@ const sortUsers = (users, sortBy) => {
 		default:
 			return sortedUsers;
 	}
+};
+
+const useUserState = (name, role, active) => {
+	const [userState, setUserState] = useState({
+		name: name,
+		role: role,
+		active: active
+	});
+
+	const setName = name => {
+		setUserState({
+			...userState,
+			name
+		});
+	};
+	const setRole = role => {
+		setUserState({
+			...userState,
+			role
+		});
+	};
+	const setActive = active => {
+		setUserState({
+			...userState,
+			active
+		});
+	};
+	return {
+		...userState,
+		setName,
+		setRole,
+		setActive
+	};
 };
 
 export default UserList;

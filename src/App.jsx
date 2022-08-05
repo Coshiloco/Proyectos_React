@@ -24,7 +24,7 @@ const USERS = [
 ];
 
 const AppConChildren = () => (
-	<UserList users={USERS}>
+	<UserList initialUsers={USERS}>
 	</UserList>
 );
 
