@@ -5,6 +5,7 @@ import UsersListRows from './UsersListRows';
 
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
+	const { name, role, active, setProps} = useUser(initialUsers)
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
@@ -50,6 +51,25 @@ const useFilters = () => {
 		setSearch,
 		setOnlyActive,
 		setSortBy
+	};
+};
+const useUser = (initialUsers) => {
+	const UserProps = {...initialUsers}
+	const [userprops, setUserProps] = useState({
+		name: UserProps.name,
+		active: UserProps.active,
+		
+		
+	});
+	const setProps = (name, role, active) =>
+	setUserProps({
+			name,
+			role,
+			active
+		});
+	return {
+		...userprops,
+		setProps
 	};
 };
 
