@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import UserRole from './UserRole';
 import style from './UserRow.module.css';
 import UserStatus from './UserStatus';
@@ -6,21 +6,19 @@ import UserStatus from './UserStatus';
 const UserRow = ({ name, active, role }) => (
 		<div className={style.user}>
 			<div className={style.name}>
-				<span>{nombreInactivo}</span>
+				<span>{name}</span>
 			</div>
 			<div className={style.status}>
-				<UserStatus active={isActive}></UserStatus>
+				<UserStatus active={active}></UserStatus>
 			</div>
 			<div className={style.role}>
-				<UserRole role={newrole}></UserRole>
+				<UserRole role={role}></UserRole>
 			</div>
 			<div className={style.action}>
 				<button
-					onClick={() => {
-						seiIsActive(!isActive);
-					}}
+					onClick={() => {}}
 				>
-					{isActive ? 'Desactivar' : 'Activar'}
+					{active ? 'Desactivar' : 'Activar'}
 				</button>
 			</div>
 		</div>
