@@ -5,10 +5,12 @@ import UsersListRows from './UsersListRows';
 
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-	const { name, role, active, setProps} = useUser(initialUsers)
+	const { name, setProps } = useUser(initialUsers);
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
+	console.log(initialUsers)
+	console.log('Pruebas ', initialUsers[0].name)
 
 	return (
 		<div className={style.list}>
@@ -53,16 +55,11 @@ const useFilters = () => {
 		setSortBy
 	};
 };
-const useUser = (initialUsers) => {
-	const UserProps = {...initialUsers}
-	const [userprops, setUserProps] = useState({
-		name: UserProps.name,
-		active: UserProps.active,
-		
-		
-	});
+const useUser = initialUsers => {
+	const UserProps = [...initialUsers];
+	const [userprops, setUserProps] = useState({ UserProps });
 	const setProps = (name, role, active) =>
-	setUserProps({
+		setUserProps({
 			name,
 			role,
 			active
