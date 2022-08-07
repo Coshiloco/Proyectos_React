@@ -3,14 +3,15 @@ import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
-const UserList = ({ initialUsers, usersNotModifed }) => {
+const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
 
-	const BeforeValues = [...usersNotModifed];
+	const newUserValues = [...initialUsers];
 
-	const [users, setUsers] = useState(initialUsers);
+	const [users, setUsers] = useState(newUserValues);
 
-	console.log('Value prueba', users);
+	console.log('COpia de initialUsers ', users);
+	console.log('initialUsers ', initialUsers)
 
 	const toggleUserActive = userId => {
 		const newUsers = [...users];
@@ -22,18 +23,18 @@ const UserList = ({ initialUsers, usersNotModifed }) => {
 			newUsers[userIndex].role = 'standby';
 		} else if (
 			newUsers[userIndex].active === false &&
-			newUsers[userIndex].role === BeforeValues[userIndex].role
+			newUsers[userIndex].role === initialUsers[userIndex].role
 		) {
 			console.log('Entrara');
 			newUsers[userIndex].active = true;
-		} else if (newUsers[userIndex].active === BeforeValues[userIndex].active) {
-			newUsers[userIndex].name = BeforeValues[userIndex].name
+		} else if (newUsers[userIndex].active === initialUsers[userIndex].active) {
+			newUsers[userIndex].name = initialUsers[userIndex].name
 			newUsers[userIndex].active = true
-			newUsers[userIndex].role = BeforeValues[userIndex].role
+			newUsers[userIndex].role = initialUsers[userIndex].role
 		} else {
-			newUsers[userIndex].name = BeforeValues[userIndex].name;
-			newUsers[userIndex].active = BeforeValues[userIndex].active;
-			newUsers[userIndex].role = BeforeValues[userIndex].role;
+			newUsers[userIndex].name = initialUsers[userIndex].name;
+			newUsers[userIndex].active = initialUsers[userIndex].active;
+			newUsers[userIndex].role = initialUsers[userIndex].role;
 		}
 		setUsers(newUsers);
 	};
