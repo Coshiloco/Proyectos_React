@@ -5,12 +5,33 @@ import UsersListRows from './UsersListRows';
 
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-	const { name, setProps } = useUser(initialUsers);
+	
+	const BeforeValues = [...initialUsers]
+
+	const [users, setUsers] = useState(initialUsers);
+	
+	console.log(' users ', users);
+
+	const toggleUserActive = userId => {
+		const newUsers = [...users];
+		const userIndex = newUsers.findIndex(user => user.id === userId);
+		if (userIndex === -1) return;
+		newUsers[userIndex].name = newUsers[userIndex].active
+			? `${newUsers[userIndex].name} esta inactivo`
+			: Bef;
+		newUsers[userIndex].active = newUsers[userIndex].active
+			? !newUsers[userIndex].active
+			: activeBefore;
+		newUsers[userIndex].role = newUsers[userIndex].active
+			? roleBefore
+			: 'standby';
+		setUsers(newUsers);
+	};
+
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
-	console.log(initialUsers)
-	console.log('Pruebas ', initialUsers[0].name)
+	console.log('Pruebas ', initialUsers[0].name);
 
 	return (
 		<div className={style.list}>
@@ -21,7 +42,10 @@ const UserList = ({ initialUsers }) => {
 				sortBy={sortBy}
 				{...setFiltersFunctions}
 			/>
-			<UsersListRows users={usersFiltered} />
+			<UsersListRows
+				users={usersFiltered}
+				toggleUserActive={toggleUserActive}
+			/>
 		</div>
 	);
 };
@@ -53,20 +77,6 @@ const useFilters = () => {
 		setSearch,
 		setOnlyActive,
 		setSortBy
-	};
-};
-const useUser = initialUsers => {
-	const UserProps = [...initialUsers];
-	const [userprops, setUserProps] = useState({ UserProps });
-	const setProps = (name, role, active) =>
-		setUserProps({
-			name,
-			role,
-			active
-		});
-	return {
-		...userprops,
-		setProps
 	};
 };
 
