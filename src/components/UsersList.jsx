@@ -3,15 +3,13 @@ import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
-const UserList = ({ initialUsers }) => {
+const UserList = ({ initialUsers, usersNotModified }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
 
-	const newUserValues = [...initialUsers];
+	const [users, setUsers] = useState(initialUsers);
 
-	const [users, setUsers] = useState(newUserValues);
-
-	console.log('COpia de initialUsers ', users);
-	console.log('initialUsers ', initialUsers)
+	console.log('COpia de initialUsers ', usersNotModified);
+	console.log('initialUsers ', users);
 
 	const toggleUserActive = userId => {
 		const newUsers = [...users];
@@ -23,18 +21,20 @@ const UserList = ({ initialUsers }) => {
 			newUsers[userIndex].role = 'standby';
 		} else if (
 			newUsers[userIndex].active === false &&
-			newUsers[userIndex].role === initialUsers[userIndex].role
+			newUsers[userIndex].role === usersNotModified[userIndex].role
 		) {
 			console.log('Entrara');
 			newUsers[userIndex].active = true;
-		} else if (newUsers[userIndex].active === initialUsers[userIndex].active) {
-			newUsers[userIndex].name = initialUsers[userIndex].name
-			newUsers[userIndex].active = true
-			newUsers[userIndex].role = initialUsers[userIndex].role
+		} else if (
+			newUsers[userIndex].active === usersNotModified[userIndex].active
+		) {
+			newUsers[userIndex].name = usersNotModified[userIndex].name;
+			newUsers[userIndex].active = true;
+			newUsers[userIndex].role = usersNotModified[userIndex].role;
 		} else {
-			newUsers[userIndex].name = initialUsers[userIndex].name;
-			newUsers[userIndex].active = initialUsers[userIndex].active;
-			newUsers[userIndex].role = initialUsers[userIndex].role;
+			newUsers[userIndex].name = usersNotModified[userIndex].name;
+			newUsers[userIndex].active = usersNotModified[userIndex].active;
+			newUsers[userIndex].role = usersNotModified[userIndex].role;
 		}
 		setUsers(newUsers);
 	};
