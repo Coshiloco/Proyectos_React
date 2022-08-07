@@ -26,6 +26,10 @@ const UserList = ({ initialUsers, usersNotModifed }) => {
 		) {
 			console.log('Entrara');
 			newUsers[userIndex].active = true;
+		} else if (newUsers[userIndex].active === BeforeValues[userIndex].active) {
+			newUsers[userIndex].name = BeforeValues[userIndex].name
+			newUsers[userIndex].active = true
+			newUsers[userIndex].role = BeforeValues[userIndex].role
 		} else {
 			newUsers[userIndex].name = BeforeValues[userIndex].name;
 			newUsers[userIndex].active = BeforeValues[userIndex].active;
