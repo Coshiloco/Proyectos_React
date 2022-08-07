@@ -8,7 +8,7 @@ const UserList = ({ initialUsers, usersNotModified }) => {
 
 	const [users, setUsers] = useState(initialUsers);
 
-	console.log('COpia de initialUsers ', usersNotModified);
+	console.log('usersNotModified ', usersNotModified);
 	console.log('initialUsers ', users);
 
 	const toggleUserActive = userId => {
