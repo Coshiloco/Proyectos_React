@@ -3,35 +3,40 @@ import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
-const UserList = ({ initialUsers }) => {
+const UserList = ({ initialUsers, usersNotModifed }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-	
-	const BeforeValues = [...initialUsers]
+
+	const BeforeValues = [...usersNotModifed];
 
 	const [users, setUsers] = useState(initialUsers);
-	
-	console.log(' users ', users);
+
+	console.log('Value prueba', users);
 
 	const toggleUserActive = userId => {
 		const newUsers = [...users];
 		const userIndex = newUsers.findIndex(user => user.id === userId);
 		if (userIndex === -1) return;
-		newUsers[userIndex].name = newUsers[userIndex].active
-			? `${newUsers[userIndex].name} esta inactivo`
-			: Bef;
-		newUsers[userIndex].active = newUsers[userIndex].active
-			? !newUsers[userIndex].active
-			: activeBefore;
-		newUsers[userIndex].role = newUsers[userIndex].active
-			? roleBefore
-			: 'standby';
+		if (newUsers[userIndex].active === true) {
+			newUsers[userIndex].name = `${newUsers[userIndex].name} esta inactivo`;
+			newUsers[userIndex].active = !newUsers[userIndex].active;
+			newUsers[userIndex].role = 'standby';
+		} else if (
+			newUsers[userIndex].active === false &&
+			newUsers[userIndex].role === BeforeValues[userIndex].role
+		) {
+			console.log('Entrara');
+			newUsers[userIndex].active = true;
+		} else {
+			newUsers[userIndex].name = BeforeValues[userIndex].name;
+			newUsers[userIndex].active = BeforeValues[userIndex].active;
+			newUsers[userIndex].role = BeforeValues[userIndex].role;
+		}
 		setUsers(newUsers);
 	};
 
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
-	console.log('Pruebas ', initialUsers[0].name);
 
 	return (
 		<div className={style.list}>
