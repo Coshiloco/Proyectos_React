@@ -5,37 +5,37 @@ import UsersListRows from './UsersListRows';
 
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-
 	const [users, setUsers] = useState(initialUsers);
-
+	console.log('users ', users);
 	const toggleUserActive = userId => {
-		const newUsers = [...users];
-		console.log('New Users ', newUsers)
-		const userIndex = newUsers.findIndex(user => user.id === userId);
+		const userIndex = users.findIndex(user => user.id === userId);
+		const NewUSerstoMutated = { ...users[userIndex] };
 		if (userIndex === -1) return;
-		setUsers(prevState => {
-			console.log('usersNotModified ', prevState);
-			if (newUsers[userIndex].active === true) {
-				newUsers[userIndex].name = `${newUsers[userIndex].name} esta inactivo`;
-				newUsers[userIndex].active = !newUsers[userIndex].active;
-				newUsers[userIndex].role = 'standby';
-			} else if (
-				newUsers[userIndex].active === false &&
-				newUsers[userIndex].role === prevState[userIndex].role
-			) {
-				console.log('Entrara');
-				newUsers[userIndex].active = true;
-			} else if (newUsers[userIndex].active === prevState[userIndex].active) {
-				console.log('caso a resolver condicion');
-				newUsers[userIndex].name = prevState[userIndex].name;
-				newUsers[userIndex].active = true;
-				newUsers[userIndex].role = prevState[userIndex].role;
-			} else {
-				newUsers[userIndex].name = prevState[userIndex].name;
-				newUsers[userIndex].active = prevState[userIndex].active;
-				newUsers[userIndex].role = prevState[userIndex].role;
-			}
-		});
+		if (NewUSerstoMutated.active === true) {
+			// console.log('Entrando en if true');
+			NewUSerstoMutated.name = `${users[userIndex].name} esta inactivo`;
+			NewUSerstoMutated.active = !users[userIndex].active;
+			NewUSerstoMutated.role = 'standby';
+		} else if (
+			NewUSerstoMutated.active === false &&
+			NewUSerstoMutated.role === users[userIndex].role
+		) {
+			// console.log('Entrara');
+			NewUSerstoMutated.active = true;
+		} else if (NewUSerstoMutated.active === users[userIndex].active) {
+			// console.log('caso a resolver condicion');
+			NewUSerstoMutated.name = users[userIndex].name;
+			NewUSerstoMutated.active = true;
+			NewUSerstoMutated.role = users[userIndex].role;
+		} else {
+			// console.log('caso del else');
+			NewUSerstoMutated.name = users[userIndex].name;
+			NewUSerstoMutated.active = users[userIndex].active;
+			NewUSerstoMutated.role = users[userIndex].role;
+		}
+		const CopyOfUSers = [...users];
+		CopyOfUSers.splice(userIndex, 1, NewUSerstoMutated);
+		setUsers(CopyOfUSers);
 	};
 
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
