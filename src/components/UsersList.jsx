@@ -35,10 +35,11 @@ const UserList = ({ initialUsers }) => {
 		}
 		const CopyOfUSers = [...users];
 		CopyOfUSers.splice(userIndex, 1, NewUSerstoMutated);
+		console.log('CopyUsers ', CopyOfUSers)
 		setUsers(CopyOfUSers);
 	};
 
-	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
+	let usersFiltered = filterActiveUsers(users, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
 	usersFiltered = sortUsers(usersFiltered, sortBy);
 
