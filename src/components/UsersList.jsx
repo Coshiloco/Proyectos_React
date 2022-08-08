@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
@@ -6,38 +6,40 @@ import UsersListRows from './UsersListRows';
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
 	const [users, setUsers] = useState(initialUsers);
-	console.log('users ', users);
+
 	const toggleUserActive = userId => {
 		const userIndex = users.findIndex(user => user.id === userId);
-		const NewUSerstoMutated = { ...users[userIndex] };
+		const newUser = { ...users[userIndex] };
 		if (userIndex === -1) return;
-		if (NewUSerstoMutated.active === true) {
+		if (newUser.active === true) {
 			// console.log('Entrando en if true');
-			NewUSerstoMutated.name = `${users[userIndex].name} esta inactivo`;
-			NewUSerstoMutated.active = !users[userIndex].active;
-			NewUSerstoMutated.role = 'standby';
-		} else if (
-			NewUSerstoMutated.active === false &&
-			NewUSerstoMutated.role === users[userIndex].role
-		) {
-			// console.log('Entrara');
-			NewUSerstoMutated.active = true;
-		} else if (NewUSerstoMutated.active === users[userIndex].active) {
-			// console.log('caso a resolver condicion');
-			NewUSerstoMutated.name = users[userIndex].name;
-			NewUSerstoMutated.active = true;
-			NewUSerstoMutated.role = users[userIndex].role;
+			newUser.active = false;
+			newUser.name = `${initialUsers[userIndex].name} esta inactivo`;
+			newUser.role = 'standby';
 		} else {
 			// console.log('caso del else');
-			NewUSerstoMutated.name = users[userIndex].name;
-			NewUSerstoMutated.active = users[userIndex].active;
-			NewUSerstoMutated.role = users[userIndex].role;
+			newUser.active = true;
+			newUser.name = initialUsers[userIndex].name;
+			newUser.role = initialUsers[userIndex].role;
 		}
-		const CopyOfUSers = [...users];
-		CopyOfUSers.splice(userIndex, 1, NewUSerstoMutated);
-		console.log('CopyUsers ', CopyOfUSers)
-		setUsers(CopyOfUSers);
+		const CopyOfUsers = [...users];
+		CopyOfUsers.splice(userIndex, 1, newUser);
+		console.log('CopyUsers ', CopyOfUsers);
+		setUsers(CopyOfUsers);
 	};
+
+	useEffect(() => {
+		const newUsers = initialUsers.map(user => {
+			if (user.active) return user;
+			return {
+				...user,
+				role: 'standby',
+				name: `${user.name} esta inactivo`
+			};
+		});
+
+		setUsers(newUsers);
+	}, [initialUsers]);
 
 	let usersFiltered = filterActiveUsers(users, onlyActive);
 	usersFiltered = filterUsersByName(usersFiltered, search);
