@@ -3,40 +3,39 @@ import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
-const UserList = ({ initialUsers, usersNotModified }) => {
+const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
 
 	const [users, setUsers] = useState(initialUsers);
 
-	console.log('usersNotModified ', usersNotModified);
-	console.log('initialUsers ', users);
-
 	const toggleUserActive = userId => {
 		const newUsers = [...users];
+		console.log('New Users ', newUsers)
 		const userIndex = newUsers.findIndex(user => user.id === userId);
 		if (userIndex === -1) return;
-		if (newUsers[userIndex].active === true) {
-			newUsers[userIndex].name = `${newUsers[userIndex].name} esta inactivo`;
-			newUsers[userIndex].active = !newUsers[userIndex].active;
-			newUsers[userIndex].role = 'standby';
-		} else if (
-			newUsers[userIndex].active === false &&
-			newUsers[userIndex].role === usersNotModified[userIndex].role
-		) {
-			console.log('Entrara');
-			newUsers[userIndex].active = true;
-		} else if (
-			newUsers[userIndex].active === usersNotModified[userIndex].active
-		) {
-			newUsers[userIndex].name = usersNotModified[userIndex].name;
-			newUsers[userIndex].active = true;
-			newUsers[userIndex].role = usersNotModified[userIndex].role;
-		} else {
-			newUsers[userIndex].name = usersNotModified[userIndex].name;
-			newUsers[userIndex].active = usersNotModified[userIndex].active;
-			newUsers[userIndex].role = usersNotModified[userIndex].role;
-		}
-		setUsers(newUsers);
+		setUsers(prevState => {
+			console.log('usersNotModified ', prevState);
+			if (newUsers[userIndex].active === true) {
+				newUsers[userIndex].name = `${newUsers[userIndex].name} esta inactivo`;
+				newUsers[userIndex].active = !newUsers[userIndex].active;
+				newUsers[userIndex].role = 'standby';
+			} else if (
+				newUsers[userIndex].active === false &&
+				newUsers[userIndex].role === prevState[userIndex].role
+			) {
+				console.log('Entrara');
+				newUsers[userIndex].active = true;
+			} else if (newUsers[userIndex].active === prevState[userIndex].active) {
+				console.log('caso a resolver condicion');
+				newUsers[userIndex].name = prevState[userIndex].name;
+				newUsers[userIndex].active = true;
+				newUsers[userIndex].role = prevState[userIndex].role;
+			} else {
+				newUsers[userIndex].name = prevState[userIndex].name;
+				newUsers[userIndex].active = prevState[userIndex].active;
+				newUsers[userIndex].role = prevState[userIndex].role;
+			}
+		});
 	};
 
 	let usersFiltered = filterActiveUsers(initialUsers, onlyActive);
