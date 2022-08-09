@@ -2,7 +2,7 @@ import UserRole from './UserRole';
 import style from './UserRow.module.css';
 import UserStatus from './UserStatus';
 
-const UserRow = ({ id, name, active, role, toggleUserActive }) => (
+const UserRow = ({ id, name, active, role, toggleUserChanges }) => (
 	<div className={style.user}>
 		<div className={style.name}>
 			<span>{name}</span>
@@ -16,7 +16,7 @@ const UserRow = ({ id, name, active, role, toggleUserActive }) => (
 		<div className={style.action}>
 			<button
 				onClick={() => {
-					toggleUserActive(id);
+					toggleUserChanges(id);
 				}}
 			>
 				{active ? 'Desactivar' : 'Activar'}

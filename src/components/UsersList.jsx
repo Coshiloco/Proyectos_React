@@ -7,7 +7,7 @@ const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
 	const [users, setUsers] = useState(initialUsers);
 
-	const toggleUserActive = userId => {
+	const toggleUserChanges = userId => {
 		const userIndex = users.findIndex(user => user.id === userId);
 		const newUser = { ...users[userIndex] };
 		if (userIndex === -1) return;
@@ -56,7 +56,7 @@ const UserList = ({ initialUsers }) => {
 			/>
 			<UsersListRows
 				users={usersFiltered}
-				toggleUserActive={toggleUserActive}
+				toggleUserChanges={toggleUserChanges}
 			/>
 		</div>
 	);
