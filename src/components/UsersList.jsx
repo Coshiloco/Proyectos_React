@@ -13,11 +13,13 @@ const UserList = ({ initialUsers }) => {
 		if (userIndex === -1) return;
 		if (newUser.active === true) {
 			// console.log('Entrando en if true');
+			console.log('Array de objetos iniciales ', initialUsers)
 			newUser.active = false;
 			newUser.name = `${initialUsers[userIndex].name} esta inactivo`;
 			newUser.role = 'standby';
 		} else {
 			// console.log('caso del else');
+			console.log('Array de objetos iniciales ', initialUsers)
 			newUser.active = true;
 			newUser.name = initialUsers[userIndex].name;
 			newUser.role = initialUsers[userIndex].role;
