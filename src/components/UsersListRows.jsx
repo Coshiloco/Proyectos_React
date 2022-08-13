@@ -1,9 +1,9 @@
 import UserRow from './UserRow';
 
-const UsersListRows = ({ users, toggleUserChanges }) => {
+const UsersListRows = ({ users }) => {
 	if (!users.length) return <p>No hay usuarios</p>;
 	return users.map(user => (
-		<UserRow key={user.id} toggleUserChanges={toggleUserChanges} {...user} />
+		<UserRow key={user.id} {...user} />
 	));
 };
 

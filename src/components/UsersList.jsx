@@ -1,34 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
 
+export const UsersContext = createContext();
+
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
-	const [users, setUsers] = useState(initialUsers);
-
-	const toggleUserChanges = userId => {
-		const userIndex = users.findIndex(user => user.id === userId);
-		const newUser = { ...users[userIndex] };
-		if (userIndex === -1) return;
-		if (newUser.active === true) {
-			// console.log('Entrando en if true');
-			console.log('Array de objetos iniciales ', initialUsers)
-			newUser.active = false;
-			newUser.name = `${initialUsers[userIndex].name} esta inactivo`;
-			newUser.role = 'standby';
-		} else {
-			// console.log('caso del else');
-			console.log('Array de objetos iniciales ', initialUsers)
-			newUser.active = true;
-			newUser.name = initialUsers[userIndex].name;
-			newUser.role = initialUsers[userIndex].role;
-		}
-		const CopyOfUsers = [...users];
-		CopyOfUsers.splice(userIndex, 1, newUser);
-		console.log('CopyUsers ', CopyOfUsers);
-		setUsers(CopyOfUsers);
-	};
+	const {	users, setUserChanged, setUsers} = UserStateChange(initialUsers)
 
 	useEffect(() => {
 		const newUsers = initialUsers.map(user => {
@@ -56,10 +35,11 @@ const UserList = ({ initialUsers }) => {
 				sortBy={sortBy}
 				{...setFiltersFunctions}
 			/>
+			<UsersContext.Provider value={{ setUserChanged  }}>
 			<UsersListRows
 				users={usersFiltered}
-				toggleUserChanges={toggleUserChanges}
 			/>
+			</UsersContext.Provider>
 		</div>
 	);
 };
@@ -93,6 +73,37 @@ const useFilters = () => {
 		setSortBy
 	};
 };
+
+const UserStateChange = initialUsers => {
+	const [users, setUsers] = useState(initialUsers);
+	const setUserChanged = userId => {
+		const userIndex = users.findIndex(user => user.id === userId);
+		const newUser = { ...users[userIndex] };
+		if (userIndex === -1) return;
+		if (newUser.active === true) {
+			// console.log('Entrando en if true');
+			console.log('Array de objetos iniciales ', initialUsers)
+			newUser.active = false;
+			newUser.name = `${initialUsers[userIndex].name} esta inactivo`;
+			newUser.role = 'standby';
+		} else {
+			// console.log('caso del else');
+			console.log('Array de objetos iniciales ', initialUsers)
+			newUser.active = true;
+			newUser.name = initialUsers[userIndex].name;
+			newUser.role = initialUsers[userIndex].role;
+		}
+		const CopyOfUsers = [...users];
+		CopyOfUsers.splice(userIndex, 1, newUser);
+		console.log('CopyUsers ', CopyOfUsers);
+		setUsers(CopyOfUsers);
+	}
+	return {
+		users,
+		setUserChanged,
+		setUsers
+	}
+}
 
 const filterUsersByName = (users, search) => {
 	if (!search) return [...users];
