@@ -1,7 +1,7 @@
 import {useContext} from 'react'
+import { UsersContext } from '../lib/contexts/UsersContext';
 import UserRole from './UserRole';
 import style from './UserRow.module.css';
-import { UsersContext } from './UsersList';
 import UserStatus from './UserStatus';
 
 const UserRow = ({ id, name, active, role }) => {

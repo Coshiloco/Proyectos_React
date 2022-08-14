@@ -1,9 +1,8 @@
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState} from 'react';
+import { UsersContext } from '../lib/contexts/UsersContext';
 import style from './UserLIst.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListRows from './UsersListRows';
-
-export const UsersContext = createContext();
 
 const UserList = ({ initialUsers }) => {
 	const { search, onlyActive, sortBy, ...setFiltersFunctions } = useFilters();
