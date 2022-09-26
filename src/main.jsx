@@ -6,6 +6,7 @@ import AppEventBubblingCapturingStopPropagation from './components/EventBubbling
 import PruebaUseEffect from './components/HookUseEfect';
 import PruebaSetState from './components/PruebaState';
 import AppFormulariosNoControlados from './FormulariosNoControlados';
+import NoTodoSonSideEffects from './NoTodoSonSideEffects';
 import AppSideEffects from './sideeffects';
 import './styles/index.css';
 
@@ -281,3 +282,4 @@ ReactDOM.render(<AppConChildren />, container);
 ReactDOM.render(<PruebaUseEffect />, container);
 ReactDOM.render(<AppSideEffects />, container);
 ReactDOM.render(<ContadorAsincrono />, container);
+ReactDOM.render(<NoTodoSonSideEffects />, container);
