@@ -1,8 +1,12 @@
 // import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AppConChildren from './App';
-// import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
-// import AppFormulariosNoControlados from './FormulariosNoControlados';
+import ContadorAsincrono from './asincronismo';
+import AppEventBubblingCapturingStopPropagation from './components/EventBubblingCapturingPropagation';
+import PruebaUseEffect from './components/HookUseEfect';
+import PruebaSetState from './components/PruebaState';
+import AppFormulariosNoControlados from './FormulariosNoControlados';
+import AppSideEffects from './sideeffects';
 import './styles/index.css';
 
 // variables
@@ -270,9 +274,10 @@ ReactDOM.render(inputRendedkeys, container);
 ReactDOM.render(componentesapp, container);
 ReactDOM.render(appprimeroscomponentespropios, container);
 ReactDOM.render(appdestructuringprops, container);
+ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
+ReactDOM.render(<AppFormulariosNoControlados />, container);
+ReactDOM.render(<PruebaSetState />, container);
 ReactDOM.render(<AppConChildren />, container);
-// ReactDOM.render(<Appeventos />, container);
-// ReactDOM.render(<AppPreveniendoComportamientoPorDefecto />, container);
-// ReactDOM.render(<Apptarget></Apptarget>, container);
-// ReactDOM.render(<AppEventBubblingCapturingStopPropagation />, container);
-// ReactDOM.render(<AppFormulariosNoControlados />, container);
+ReactDOM.render(<PruebaUseEffect />, container);
+ReactDOM.render(<AppSideEffects />, container);
+ReactDOM.render(<ContadorAsincrono />, container);
