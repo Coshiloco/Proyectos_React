@@ -27,6 +27,6 @@ const USERS = [
 	}
 ];
 
-const AppConChildren = () => <UserList initialUsers={USERS}></UserList>;
+const AppConChildren = () => <UserList initialUsers={USERS} ></UserList>;
 
 export default AppConChildren;
